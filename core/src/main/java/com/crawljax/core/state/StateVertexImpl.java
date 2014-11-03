@@ -24,6 +24,7 @@ class StateVertexImpl implements StateVertex {
 	private final String strippedDom;
 	private final String url;
 	private String name;
+	private boolean necessaryToCrawl;
 
 	private ImmutableList<CandidateElement> candidateElements;
 
@@ -58,6 +59,7 @@ class StateVertexImpl implements StateVertex {
 		this.name = name;
 		this.dom = dom;
 		this.strippedDom = strippedDom;
+		this.necessaryToCrawl = true;
 	}
 
 	@Override
@@ -121,6 +123,16 @@ class StateVertexImpl implements StateVertex {
 	@Override
 	public ImmutableList<CandidateElement> getCandidateElements() {
 		return candidateElements;
+	}
+
+	@Override
+	public boolean isNecessaryToCrawl() {
+		return necessaryToCrawl;
+	}
+
+	@Override
+	public void setIsNecessaryToCrawl(boolean necessaryToCrawl) {
+		this.necessaryToCrawl = necessaryToCrawl;	
 	}
 
 }

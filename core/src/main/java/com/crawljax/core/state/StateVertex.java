@@ -68,5 +68,13 @@ public interface StateVertex extends Serializable {
 	 *         error it returns <code>null</code>.
 	 */
 	ImmutableList<CandidateElement> getCandidateElements();
+	
+	/**
+	 * 
+	 * @return A boolean that indicates whether the state is necessary to crawl.
+	 */
+	boolean isNecessaryToCrawl();
+	
+	void setIsNecessaryToCrawl(boolean necessaryToCrawl);
 
 }

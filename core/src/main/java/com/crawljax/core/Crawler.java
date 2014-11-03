@@ -369,6 +369,8 @@ public class Crawler {
 			LOG.info("New DOM is a new state! crawl depth is now {}", depth);
 			if (maxDepth == depth) {
 				LOG.debug("Maximum depth achived. Not crawling this state any further");
+			} else if (!newState.isNecessaryToCrawl()) {
+				LOG.debug("Not needed to crawl this state due to some reason.");
 			} else {
 				parseCurrentPageForCandidateElements();
 			}
