@@ -91,6 +91,31 @@ public final class CrawlElement {
 		}
 		return this;
 	}
+	
+	/**
+	 * Restrict CrawlElement to include only HTML elements with the specified attribute. For example
+	 * <div class="foo">... <div class="bar">.. </div> </div> withAtttribute("class", "foo") Would
+	 * restrict this CrawlElement to only include the div with class="foo"... AttributeName and
+	 * value strings can support wild-card characters. Use % in to represent a wild-card string. e.g
+	 * (% is the regex .*) When withAttribute() is called multiple times the CrawlElement will match
+	 * only those HTML elements that have all the specified attributes.
+	 * 
+	 * @param attributeName
+	 *            the name of the attribute
+	 * @param value
+	 *            the value of the attribute
+	 * @return this CrawlElement
+	 */
+	public CrawlElement withAttributeLike(String attributeName, String value) {
+		if (this.underXpath == null || this.underXpath.isEmpty()) {
+			this.underXpath = "//" + this.tagName + "[contains(@" + attributeName + ", '" + value + "')]";
+		} else {
+			this.underXpath =
+			        this.underXpath + " | " + "//" + this.tagName + "[@" + attributeName + "='"
+			                + value + "']";
+		}
+		return this;
+	}
 
 	/**
 	 * Restrict CrawlElement to include only HTML elements which are under HTML element X which
