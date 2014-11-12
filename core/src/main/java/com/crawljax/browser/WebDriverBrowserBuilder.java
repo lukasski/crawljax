@@ -142,7 +142,7 @@ public class WebDriverBrowserBuilder implements Provider<EmbeddedBrowser> {
 
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("takesScreenshot", true);
-		caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new String[]{"--webdriver-loglevel=WARN"});
+		caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new String[]{"--webdriver-loglevel=WARN", "--ssl-protocol=tlsv1"});
 		final ProxyConfiguration proxyConf = configuration
 				.getProxyConfiguration();
 		if (proxyConf != null && proxyConf.getType() != ProxyType.NOTHING) {
