@@ -102,6 +102,10 @@ public class WebDriverBrowserBuilder implements Provider<EmbeddedBrowser> {
 			        .getHostname());
 			profile.setPreference("network.proxy.http_port", configuration
 			        .getProxyConfiguration().getPort());
+			profile.setPreference("network.proxy.ssl", configuration.getProxyConfiguration()
+			        .getHostname());
+			profile.setPreference("network.proxy.ssl_port", configuration
+			        .getProxyConfiguration().getPort());
 			profile.setPreference("network.proxy.type", configuration.getProxyConfiguration()
 			        .getType().toInt());
 			/* use proxy for everything, including localhost */
